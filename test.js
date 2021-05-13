@@ -1,8 +1,8 @@
 function init() {
     let images = document.getElementsByTagName('img');
-    console.log(images);
     for (let i = 0; i < images.length; i++) {
-        images[i].onclick = showAnswer;
+        images[i].onmouseover = showAnswer;
+        images[i].onmouseout = reblur;
     }
 }
 
@@ -11,6 +11,18 @@ function showAnswer(eventObj) {
     let name = image.id;
     name = 'img/' + name + '.jpg';
     image.src = name;
+
 }
+
+function reblur(eventObj) {
+    let image = eventObj.target
+    let name = image.id;
+    name = 'img/' + name + 'blur.jpg';
+    image.src = name;
+    
+    let cityName = image.alt;
+    alert(cityName);
+}
+
 
 window.onload = init;
